@@ -1,0 +1,26 @@
+{
+  "name": "react-kanban",
+  "version": "1.0.0",
+  "description": "> A digital Kanban board made with React",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gina3090/React-Kanban.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gina3090/React-Kanban/issues"
+  },
+  "homepage": "https://github.com/gina3090/React-Kanban#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "pg": "^6.1.5",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.30.2"
+  }
+}
