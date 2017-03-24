@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #222;
+  height: 60px;
+  padding: 20px;
+  color: white;
+}
+
+.Queue {
+  float: left; 
+  width: 400px;
+}
+
+.Progress {
+  display: inline-block;
+  width: 400px;
+}
+
+.Done {
+  float: right;
+  width: 400px;
+}
