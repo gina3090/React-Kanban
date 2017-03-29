@@ -1,41 +1,76 @@
 import React, { Component } from 'react';
-import AppTitle from '../../components/AppTitle';
-import Queue from '../../components/Queue';
-import Progress from '../../components/Progress';
+import InQueue from '../../components/InQueue';
+import InProgress from '../../components/InProgress';
 import Done from '../../components/Done';
-import Card from '../../components/Card';
+import NewCardForm from '../NewCardForm';
 import './styles.css';
 
+import { connect } from 'react-redux';
+import { addCard } from '../../actions';
+
+import getCards from '../../lib/getCards';
+
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      appTitle: 'KANBAN',
-      queueTitle: 'IN QUEUE',
-      progressTitle: 'IN PROGRESS',
-      doneTitle: 'DONE',
-      cards: []
-    };
+  constructor(props) {
+    super(props);
+
+    this.title = 'KANBAN';
+  }
+
+  componentWillMount() {
+    getCards()
+      .then(data => {
+        data.forEach(cards => {
+          this.props.onAddCard(cards.title, cards.priority, cards.status, cards.createdBy, cards.assignedTo);
+        })
+      })
   }
 
   render() {
     return (
-      <div className="App">
-        <AppTitle
-          appTitle={this.state.appTitle}
-        />
-        <Queue
-          queueTitle={this.state.queueTitle}
-        />
-        <Progress
-          progressTitle={this.state.progressTitle}
-        />
-        <Done
-          doneTitle={this.state.doneTitle}
-        />
+      <div className="app">
+        <div className="app-header">
+          <h1>{this.title}</h1>
+        </div>
+        <div className="queue">
+          <div className="queue-title">
+            <h2>IN QUEUE</h2>
+          </div>
+          <InQueue cards={this.props.cards} />
+        </div>
+        <div className="progress">
+          <div className="progress-title">
+            <h2>IN PROGRESS</h2>
+          </div>
+          <InProgress cards={this.props.cards} />
+        </div>
+        <div className="done">
+          <div className="done-title">
+            <h2>DONE</h2>
+          </div>
+          <Done cards={this.props.cards} />
+        </div>
+        <NewCardForm addCard={this.props.addCard} />
       </div>
     );
   }
 }
+  
+const mapStateToProps = (state) => {
+  return {
+    cards: state.cards
+  }
+};
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddCard: (title, priority, status, createdBy, assignedTo) => {
+      dispatch(addCard(title, priority, status, createdBy, assignedTo));
+    }
+  }
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
