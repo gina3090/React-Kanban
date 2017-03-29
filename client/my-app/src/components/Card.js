@@ -1,11 +1,11 @@
 import React from 'react';
 
 const Card = (props) => (
-  <div className="Card">
+  <div className="card">
     <h3>{props.title}</h3>
-    <p>{props.priority}</p>
-    <p>{props.createdBy}</p>
-    <p>{props.assignedTo}</p>
+    <p>Priority: {props.priority}</p>
+    <p>Created by: {props.createdBy}</p>
+    <p>Assigned to: {props.assignedTo}</p>
   </div>
 );
 
