@@ -10,9 +10,11 @@ router.route('/')
         res.send(cards);
       })
       .catch((err) => {
-        res.send('error', err);
+        res.send(err);
       });
-  })
+  });
+
+router.route('/new')
   .post((req, res) => {
     Cards.create({
       title: req.body.title,
@@ -22,14 +24,14 @@ router.route('/')
       assignedTo: req.body.assignedTo
     })
     .then((card) => {
-      res.send('created');
+      res.send(card);
     })
     .catch((err) => {
-      res.send('error', err);
+      res.send(err);
     });
   });
 
-router.route('/:id')
+router.route('/:id/edit')
   .put((req, res) => {
     Cards.findById(req.params.id)
       .then((card) => {
@@ -41,24 +43,26 @@ router.route('/:id')
           assignedTo: req.body.assignedTo
         })
         .then((card) => {
-          res.send('updated');
+          res.send(card);
         })
         .catch((err) => {
-          res.send('error', err);
+          res.send(err);
         });
       });
-  })
+  });
+
+router.route('/:id')
   .delete((req, res) => {
     Cards.destroy({
       where: {
         id: req.params.id
       }
     })
-    .then((card) => {
-      res.send('deleted');
+    .then(() => {
+      res.end();
     })
     .catch((err) => {
-      res.send('error', err);
+      res.send(err);
     });
   });
 
