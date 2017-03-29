@@ -1,25 +1,30 @@
-.App {
+.app {
   text-align: center;
 }
 
-.App-header {
+.app-header {
   background-color: #222;
-  height: 60px;
-  padding: 20px;
+  height: 75px;
+  padding: 10px;
   color: white;
 }
 
-.Queue {
-  float: left; 
-  width: 400px;
+.queue {
+  float: left;
+  padding: 10px;
+  margin-left: 100px;
+  width: 250px;
 }
 
-.Progress {
+.progress {
   display: inline-block;
-  width: 400px;
+  padding: 10px;
+  width: 250px;
 }
 
-.Done {
+.done {
   float: right;
-  width: 400px;
+  padding: 10px;
+  margin-right: 100px;
+  width: 250px;
 }
