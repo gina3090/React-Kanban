@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import InQueue from '../../components/InQueue';
 import InProgress from '../../components/InProgress';
 import Done from '../../components/Done';
-import NewCardForm from '../NewCardForm';
+import NewCardForm from '../../components/NewCardForm';
 import './styles.css';
 
 import { connect } from 'react-redux';
 import { addCard } from '../../actions';
 
 import getCards from '../../lib/getCards';
+import postCard from '../../lib/postCard';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.title = 'KANBAN';
+
+    this.addCard = this.addCard.bind(this);
   }
 
   componentWillMount() {
@@ -24,6 +27,13 @@ class App extends Component {
           this.props.onAddCard(cards.title, cards.priority, cards.status, cards.createdBy, cards.assignedTo);
         })
       })
+  }
+
+  addCard(card) {
+    postCard(card)
+      .then(cards => {
+        this.props.onAddCard(card.title, card.priority, card.status, card.createdBy, card.assignedTo);
+      });
   }
 
   render() {
@@ -50,7 +60,7 @@ class App extends Component {
           </div>
           <Done cards={this.props.cards} />
         </div>
-        <NewCardForm addCard={this.props.addCard} />
+        <NewCardForm addCard={this.addCard} />
       </div>
     );
   }

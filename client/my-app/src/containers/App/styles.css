@@ -28,3 +28,20 @@
   margin-right: 100px;
   width: 250px;
 }
+
+.card {
+  border-style: solid;
+  width: 250px;
+  height: 200px;
+  margin-bottom: 50px;
+}
+
+.edit-button {
+  margin-right: 10px;
+}
+
+.new-card-form {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
