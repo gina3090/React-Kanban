@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Card = (props) => (
-  <div className="card">
-    <h3>{props.title}</h3>
-    <p>Priority: {props.priority}</p>
-    <p>Created by: {props.createdBy}</p>
-    <p>Assigned to: {props.assignedTo}</p>
-  </div>
-);
+class Card extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="card">
+        <h3>{this.props.title}</h3>
+        <p>Priority: {this.props.priority}</p>
+        <p>Created by: {this.props.createdBy}</p>
+        <p>Assigned to: {this.props.assignedTo}</p>
+        <button className="edit-button">Edit</button>
+        <button className="delete-button">Delete</button>
+      </div>
+    );
+  }
+}
 
 export default Card;
