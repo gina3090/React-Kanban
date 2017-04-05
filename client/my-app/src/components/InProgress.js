@@ -11,7 +11,7 @@ class InProgress extends Component {
       <div className="progress-cards">
         {this.props.cards
           .filter((card) =>
-            card.status === 'progress'
+            card.status === 'In Progress'
           )
           .map((card) => {
             return (

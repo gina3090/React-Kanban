@@ -11,7 +11,7 @@ class Done extends Component {
       <div className="done-cards">
         {this.props.cards
           .filter((card) =>
-            card.status === 'done'  
+            card.status === 'Done'  
           )
           .map((card) => {
             return (

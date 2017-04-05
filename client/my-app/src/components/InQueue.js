@@ -11,7 +11,7 @@ class InQueue extends Component {
       <div className="queue-cards">
         {this.props.cards
           .filter((card) =>
-            card.status === 'queue'
+            card.status === 'In Queue'
           )
           .map((card) => {
             return (
