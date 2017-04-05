@@ -1,4 +1,4 @@
-module.exports = function postCard() {
+module.exports = function postCard(card) {
   return new Promise((resolve, reject) => {
     function postCardData() {
       let data = JSON.parse(this.responseText);
@@ -6,8 +6,8 @@ module.exports = function postCard() {
     }
     const postCard = new XMLHttpRequest();
     postCard.addEventListener("load", postCardData);
-    postCard.open("POST", "/api/kanban/new");
-    postCard.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    postCard.send();
+    postCard.open("POST", "/api/kanban/new", true);
+    postCard.setRequestHeader("Content-Type", "application/json");
+    postCard.send(JSON.stringify(card));
   });
 };
