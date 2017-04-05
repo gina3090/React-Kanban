@@ -9,7 +9,8 @@ class InProgress extends Component {
   render() {
     return (
       <div className="progress-cards">
-        {this.props.cards
+        {
+          this.props.cards
           .filter((card) =>
             card.status === 'In Progress'
           )

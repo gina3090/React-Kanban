@@ -9,7 +9,8 @@ class Done extends Component {
   render() {
     return (
       <div className="done-cards">
-        {this.props.cards
+        {
+          this.props.cards
           .filter((card) =>
             card.status === 'Done'  
           )

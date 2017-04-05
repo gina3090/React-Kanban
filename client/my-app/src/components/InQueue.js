@@ -9,7 +9,8 @@ class InQueue extends Component {
   render() {
     return (
       <div className="queue-cards">
-        {this.props.cards
+        {
+          this.props.cards
           .filter((card) =>
             card.status === 'In Queue'
           )
