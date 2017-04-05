@@ -6,7 +6,7 @@ module.exports = function postCard(card) {
     }
     const postCard = new XMLHttpRequest();
     postCard.addEventListener("load", postCardData);
-    postCard.open("POST", "/api/kanban/new", true);
+    postCard.open("POST", "/api/kanban/new");
     postCard.setRequestHeader("Content-Type", "application/json");
     postCard.send(JSON.stringify(card));
   });
