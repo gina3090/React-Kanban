@@ -31,7 +31,7 @@ router.route('/new')
     });
   });
 
-router.route('/edit')
+router.route('/:id/edit')
   .put((req, res) => {
     Cards.findById(req.params.id)
       .then((card) => {
@@ -49,7 +49,9 @@ router.route('/edit')
           res.send(err);
         });
       });
-  })
+  });
+
+router.route('/:id')
   .delete((req, res) => {
     Cards.destroy({
       where: {
