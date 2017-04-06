@@ -17,6 +17,7 @@ class InQueue extends Component {
           .map((card) => {
             return (
               <Card
+                id={card.id}
                 title={card.title}
                 priority={card.priority}
                 createdBy={card.createdBy}
