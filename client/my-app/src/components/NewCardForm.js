@@ -37,7 +37,7 @@ class NewCardForm extends Component {
       status: '',
       createdBy: '',
       assignedTo: ''
-    })
+    });
   }
 
   handleTitle(event) {
